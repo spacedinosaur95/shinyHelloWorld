@@ -9,11 +9,14 @@ library(shiny)
 # shiny apps have two components: the UI and the server 
 
 # establishing the UI component 
-ui <- "Hello, World!" # screen will just print Hello, World! (title of UI)
+# changing from just a title to having a fluid page
+ui <- fluidPage(
+  h1("Hello, World!") # changing from just text to having a header
+)
 
 # establishing the server component 
 server <- function(input, output, session){
 }
 
 # calling the shiny app, the UI and the server
-shinyApp(ui, server) 
+shinyApp(ui, server)
