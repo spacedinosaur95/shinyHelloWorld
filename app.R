@@ -38,6 +38,11 @@ server <- function(input, output, session){
     dataset <- get(input$dataset, "package:datasets", inherits = FALSE)
     str(dataset)
   })
+  # actually showing plots of the datasets :) 
+  output$plot <- renderPlot({
+    dataset <- get(input$dataset, "package:datasets", inherits = FALSE)
+    plot(dataset)
+  })
 }
 
 # calling the shiny app, the UI and the server
