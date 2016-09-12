@@ -23,11 +23,21 @@ ui <- fluidPage(
     # pre-select a choice for the dropdown box
     selected = "pressure")
   ), 
-  mainPanel()
+  # make a main panel
+  mainPanel(
+    # putting out text output ... needs to be verbatim so it doesn't look like garbage 
+    verbatimTextOutput("dump"), 
+    # plot the dataset 
+    plotOutput("plot")
+  )
 )
 
 # establishing the server component 
 server <- function(input, output, session){
+  output$dump <- renderPrint({
+    dataset <- get(input$dataset, "package:datasets", inherits = FALSE)
+    str(dataset)
+  })
 }
 
 # calling the shiny app, the UI and the server
