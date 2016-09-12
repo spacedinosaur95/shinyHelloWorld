@@ -28,7 +28,9 @@ ui <- fluidPage(
     # putting out text output ... needs to be verbatim so it doesn't look like garbage 
     verbatimTextOutput("dump"), 
     # plot the dataset 
-    plotOutput("plot")
+    plotOutput("plot"),
+    # make a table 
+    tableOutput("table")
   )
 )
 
@@ -42,6 +44,11 @@ server <- function(input, output, session){
   output$plot <- renderPlot({
     dataset <- get(input$dataset, "package:datasets", inherits = FALSE)
     plot(dataset)
+  })
+  # showing the table
+  output$table <- renderTable({
+    dataset <- get(input$dataset, "package:datasets", inherits = FALSE)
+    dataset
   })
 }
 
