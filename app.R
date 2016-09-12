@@ -25,12 +25,18 @@ ui <- fluidPage(
   ), 
   # make a main panel
   mainPanel(
-    # putting out text output ... needs to be verbatim so it doesn't look like garbage 
-    verbatimTextOutput("dump"), 
-    # plot the dataset 
-    plotOutput("plot"),
-    # make a table 
-    tableOutput("table")
+    # making tabs to click on to see str, plot, and table each in one tab... "tabset"
+    tabsetPanel(
+      tabPanel("Str", 
+      verbatimTextOutput("dump")
+      ), 
+      tabPanel("Plot", 
+        plotOutput("plot")
+        ),
+      tabPanel("Table", 
+        tableOutput("table")
+        )
+    )
   )
 )
 
