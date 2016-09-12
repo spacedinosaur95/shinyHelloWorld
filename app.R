@@ -10,8 +10,20 @@ library(shiny)
 
 # establishing the UI component 
 # changing from just a title to having a fluid page
+# putting in a sidebar into the app
+# putting in a main panel into the app
 ui <- fluidPage(
-  h1("Hello, World!") # changing from just text to having a header
+  h1("Hello, World!"), # changing from just text to having a header
+  # make sidebar panel
+  sidebarPanel( 
+    # making a dropdown box
+    selectInput("dataset", "Choose a dataset:", 
+    # put in options for the dropdown box
+    choices = ls("package:datasets"), 
+    # pre-select a choice for the dropdown box
+    selected = "pressure")
+  ), 
+  mainPanel()
 )
 
 # establishing the server component 
